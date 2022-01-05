@@ -5,8 +5,9 @@ from datetime import datetime
 import random
 from PIL import ImageTk, Image
 import os
+import tkinter.font as font
 
-print("chal gyi")
+print("dbms project")
 selected_items = []
 r = random.randint(10000, 999999)
 print(r)
@@ -22,10 +23,10 @@ def saldellist(tree):
 
 # View deleted bills
 def deleted_bills(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     tree = ttk.Treeview(t)
     b = Button(t, text="SHOW", command=lambda: saldellist(
-        tree), fg="white", bg="#1966ff")
+        tree), fg="black", bg="white")
     tree["columns"] = ("one", "two", "three")
     tree.heading("#0", text="DATE/TIME")
     tree.heading("one", text="EMPLOYEE ID")
@@ -59,10 +60,10 @@ def sal_del(tree, username):
 
 # Remove bill
 def remove_bill(tab_main, username):
-    t = Frame(tab_main, background="#212121")
-    l = Label(t, text="ENTER REFNO:", fg="white", bg="#212121")
+    t = Frame(tab_main, background="white")
+    l = Label(t, text="ENTER REFNO:", fg="black", bg="white")
     e = Entry(t)
-    b = Button(t, text="DELETE", fg="white", bg="#1966ff",
+    b = Button(t, text="DELETE", fg="black", bg="white",
                command=lambda: delete_bill(e.get()))
     l.pack()
     e.pack()
@@ -76,7 +77,7 @@ def remove_bill(tab_main, username):
     tree.column("two", anchor=CENTER)
     tree.column("three", anchor=CENTER)
     b = Button(t, text="SHOW", command=lambda: sal_del(
-        tree, username), fg="white", bg="#1966ff")
+        tree, username), fg="black", bg="white")
     b.pack()
     tree.pack()
     return t
@@ -93,7 +94,7 @@ def ck_and_edit_price(item, price):
 
 # Change price of item
 def change_price_of_item(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     rows = get_items()
     options = []
     for i in rows:
@@ -102,10 +103,10 @@ def change_price_of_item(tab_main, username):
     if(len(options)):
         clicked.set(options[0])
         drop = OptionMenu(t, clicked, *options)
-        l = Label(t, text="ENTER NEW PRICE:", fg="white", bg="#212121")
+        l = Label(t, text="ENTER NEW PRICE:", fg="black", bg="white")
         c = Entry(t)
         b = Button(t, text="UPDATE PRICE", command=lambda: ck_and_edit_price(
-            clicked.get(), c.get()), fg="white", bg="#1966ff")
+            clicked.get(), c.get()), fg="black", bg="white")
         drop.pack()
         l.pack()
         c.pack()
@@ -124,14 +125,14 @@ def exec_del_item(iid):
 
 # Delete item
 def delete_item(tab_main, username):
-    t = Frame(tab_main, background="#212121")
-    l1 = Label(t, text="Enter item id: ", fg="white", bg="#212121")
+    t = Frame(tab_main, background="white")
+    l1 = Label(t, text="Enter item id: ", fg="black", bg="white")
     e1 = Entry(t)
     b = Button(t, text="REMOVE", command=lambda: exec_del_item(
-        e1.get()), fg="white", bg="#1966ff")
-    l1.grid(row=0, column=0)
-    e1.grid(row=0, column=1)
-    b.grid(row=2, column=1)
+        e1.get()), fg="black", bg="white")
+    l1.grid(row=0, column=0,padx=200,pady=(300,0))
+    e1.grid(row=0, column=1,pady=(300,0))
+    b.grid(row=2, column=1,pady=50)
     return t
 
 
@@ -146,14 +147,14 @@ def exec_del_user(uid):
 
 # Delete user
 def delete_user(tab_main, username):
-    t = Frame(tab_main, background="#212121")
-    l1 = Label(t, text="Enter user id: ", fg="white", bg="#212121")
+    t = Frame(tab_main, background="white")
+    l1 = Label(t, text="Enter user id: ", fg="black", bg="white")
     e1 = Entry(t)
     b = Button(t, text="REMOVE", command=lambda: exec_del_user(
-        e1.get()), fg="white", bg="#1966ff")
-    l1.grid(row=0, column=0)
-    e1.grid(row=0, column=1)
-    b.grid(row=2, column=1)
+        e1.get()), fg="black", bg="white")
+    l1.grid(row=0, column=0,padx=200,pady=(300,0))
+    e1.grid(row=0, column=1,pady=(300,0))
+    b.grid(row=2, column=1,pady=50)
     return t
 
 
@@ -169,22 +170,22 @@ def ck_and_add_item(itemid, name, cost):
 
 # Add items to database
 def add_item_to_db(tab_main, username):
-    t = Frame(tab_main, background="#212121")
-    l1 = Label(t, text="Enter item id: ", fg="white", bg="#212121")
+    t = Frame(tab_main, background="white")
+    l1 = Label(t, text="Enter item id: ", fg="black", bg="white")
     e1 = Entry(t)
-    l2 = Label(t, text="Enter name: ", fg="white", bg="#212121")
+    l2 = Label(t, text="Enter name: ", fg="black", bg="white")
     e2 = Entry(t)
-    l3 = Label(t, text="Enter cost: ", fg="white", bg="#212121")
+    l3 = Label(t, text="Enter cost: ", fg="black", bg="white")
     e3 = Entry(t)
     b = Button(t, text="ADD", command=lambda: ck_and_add_item(e1.get(), e2.get(), e3.get()),
-               fg="white", bg="#1966ff")
-    l1.grid(row=0, column=0)
-    e1.grid(row=0, column=1)
-    l2.grid(row=1, column=0)
+               fg="black", bg="white")
+    l1.grid(row=0, column=0,padx=200,pady=(200,0))
+    e1.grid(row=0, column=1,pady=(200,0))
+    l2.grid(row=1, column=0,padx=200)
     e2.grid(row=1, column=1)
-    l3.grid(row=2, column=0)
+    l3.grid(row=2, column=0,padx=200)
     e3.grid(row=2, column=1)
-    b.grid(row=4, column=1)
+    b.grid(row=4, column=1,pady=50)
     return t
 
 
@@ -198,10 +199,10 @@ def show_item_list(tree):
 
 # List items
 def list_items(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     tree = ttk.Treeview(t)
     b = Button(t, text="SHOW", command=lambda: show_item_list(
-        tree), fg="white", bg="#1966ff")
+        tree), fg="black", bg="white")
     tree["columns"] = ("one", "two")
     tree.heading("#0", text="ID")
     tree.heading("one", text="NAME")
@@ -226,26 +227,26 @@ def ck_and_add(username, name, password, phno):
 
 # Add user
 def add_user(tab_main, username):
-    t = Frame(tab_main, background="#212121")
-    l1 = Label(t, text="Enter user id: ", fg="white", bg="#212121")
+    t = Frame(tab_main, background="white")
+    l1 = Label(t, text="Enter user id: ", fg="black", bg="white")
     e1 = Entry(t)
-    l2 = Label(t, text="Enter name: ", fg="white", bg="#212121")
+    l2 = Label(t, text="Enter name: ", fg="black", bg="white")
     e2 = Entry(t)
-    l3 = Label(t, text="Enter user password: ", fg="white", bg="#212121")
+    l3 = Label(t, text="Enter user password: ", fg="black", bg="white")
     e3 = Entry(t)
-    l4 = Label(t, text="Enter PHNO: ", fg="white", bg="#212121")
+    l4 = Label(t, text="Enter PHNO: ", fg="black", bg="white")
     e4 = Entry(t)
     b = Button(t, text="ADD", command=lambda: ck_and_add(e1.get(), e2.get(), e3.get(), e4.get()),
-               fg="white", bg="#1966ff")
-    l1.grid(row=0, column=0)
-    e1.grid(row=0, column=1)
-    l2.grid(row=1, column=0)
+               fg="black", bg="white")
+    l1.grid(row=0, column=0,padx=200,pady=(200,0))
+    e1.grid(row=0, column=1,pady=(200,0))
+    l2.grid(row=1, column=0,padx=200)
     e2.grid(row=1, column=1)
-    l3.grid(row=2, column=0)
+    l3.grid(row=2, column=0,padx=200)
     e3.grid(row=2, column=1)
-    l4.grid(row=3, column=0)
+    l4.grid(row=3, column=0,padx=200)
     e4.grid(row=3, column=1)
-    b.grid(row=4, column=1)
+    b.grid(row=4, column=1,pady=50)
     return t
 
 
@@ -259,10 +260,10 @@ def sal(tree):
 
 # List sales
 def sales(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     tree = ttk.Treeview(t)
     b = Button(t, text="SHOW", command=lambda: sal(
-        tree), fg="white", bg="#1966ff")
+        tree), fg="black", bg="white")
     tree["columns"] = ("one", "two", "three")
     tree.heading("#0", text="DATE/TIME")
     tree.heading("one", text="EMPLOYEE ID")
@@ -287,10 +288,10 @@ def s(tree):
 
 # List employees
 def list_emp(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     tree = ttk.Treeview(t)
     b = Button(t, text="SHOW", command=lambda: s(
-        tree), fg="white", bg="#1966ff")
+        tree), fg="black", bg="white")
     tree["columns"] = ("one", "two")
     tree.heading("#0", text="ID")
     tree.heading("one", text="NAME")
@@ -324,20 +325,20 @@ def get_bill(username):
     t = Toplevel()
     t.geometry("350x700")
     t.title("BILL")
-    t.configure(bg="#212121")
+    t.configure(bg="white")
     date = Label(t, text="DATE: " +
-                 datetime.now().strftime("%d-%m-%Y"), fg="white", bg="#212121")
+                 datetime.now().strftime("%d-%m-%Y"), fg="black", bg="white")
     time = Label(t, text="TIME: "+datetime.now().strftime("%H:%M"),
-                 fg="white", bg="#212121")
-    ref = Label(t, text="REF NO: "+str(r), fg="white", bg="#212121")
+                 fg="black", bg="white")
+    ref = Label(t, text="REF NO: "+str(r), fg="black", bg="white")
     emp = Label(t, text="EMPLOYEE ID: "+str(username),
-                fg="white", bg="#212121")
-    costl = Label(t, text="COST: "+str(cost), fg="white", bg="#212121")
-    taxl = Label(t, text="TAX: "+str(tax), fg="white", bg="#212121")
+                fg="black", bg="white")
+    costl = Label(t, text="COST: "+str(cost), fg="black", bg="white")
+    taxl = Label(t, text="TAX: "+str(tax), fg="black", bg="white")
     servicel = Label(t, text="SERVICE CHARGES: " +
-                     str(service), fg="white", bg="#212121")
+                     str(service), fg="black", bg="white")
     total_costl = Label(t, text="TOTAL COST: " +
-                        str(total_cost), fg="white", bg="#212121")
+                        str(total_cost), fg="black", bg="white")
     date.pack()
     time.pack()
     ref.pack()
@@ -346,10 +347,10 @@ def get_bill(username):
     taxl.pack()
     servicel.pack()
     total_costl.pack()
-    Label(t, text="ITEMS:", fg="white", bg="#212121").pack()
+    Label(t, text="ITEMS:", fg="black", bg="white").pack()
     for it in range(len(selected_items)):
         Label(t, text=selected_items[it][0] + "( X "+str(
-            selected_items[it][1])+" )", fg="white", bg="#212121").pack()
+            selected_items[it][1])+" )", fg="black", bg="white").pack()
     if total_cost:
         store(datetime.now(), username, total_cost, r)
     return t
@@ -372,14 +373,14 @@ def two(tree):
 
 # Show the various items added to the bill
 def show_items(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     tree = ttk.Treeview(t)
     b = Button(t, text="REFRESH", command=lambda: two(
-        tree), fg="white", bg="#1966ff")
+        tree), fg="black", bg="white")
     b2 = Button(t, text="SUBMIT", command=lambda: get_bill(
-        username), fg="white", bg="#1966ff")
+        username), fg="black", bg="white")
     reset = Button(t, text="RESET", command=lambda: resetf(),
-                   fg="white", bg="#1966ff")
+                   fg="black", bg="white")
     tree["columns"] = ("one", "two","three")
     tree.heading("#0", text="NAME")
     tree.heading("one", text="QUANTITY")
@@ -398,7 +399,7 @@ def show_items(tab_main, username):
 
 # Billing section
 def bill(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     rows = get_items()
     options = []
     for i in rows:
@@ -409,12 +410,12 @@ def bill(tab_main, username):
         cl = IntVar()
         cl.set(1)
         drop = OptionMenu(t, clicked, *options)
-        l = Label(t, text="SELECT QUANTITY:", fg="white", bg="#212121")
+        l = Label(t, text="SELECT QUANTITY:", fg="black", bg="white")
         q = OptionMenu(t, cl, 1, 2, 3, 4, 5, 6, 7, 8, 9)
         b = Button(t, text="ADD", command=lambda: add_item(
-            clicked.get(), cl.get()), fg="white", bg="#1966ff")
+            clicked.get(), cl.get()), fg="black", bg="white")
         reset = Button(t, text="RESET", command=lambda: resetf(),
-                       fg="white", bg="#1966ff")
+                       fg="black", bg="white")
         drop.pack()
         l.pack()
         q.pack()
@@ -425,19 +426,19 @@ def bill(tab_main, username):
 
 # Employee details
 def user_details(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     data = get_user_details(int(username))
-    lname = Label(t, text="NAME: "+data[1], fg="white", bg="#212121")
-    lid = Label(t, text="ID: "+str(data[0]), fg="white", bg="#212121")
-    lphno = Label(t, text="PHNO: "+str(data[2]), fg="white", bg="#212121")
+    lname = Label(t, text="NAME: "+data[1], fg="black", bg="white")
+    lid = Label(t, text="ID: "+str(data[0]), fg="black", bg="white")
+    lphno = Label(t, text="PHNO: "+str(data[2]), fg="black", bg="white")
     lname.config(font=("Courier", 34))
     lid.config(font=("Courier", 34))
     lphno.config(font=("Courier", 34))
     lname.pack()
     lid.pack()
     lphno.pack()
-    img = ImageTk.PhotoImage(Image.open(r"img\bill.jpg"))
-    panel = Label(t, image=img)
+    img = ImageTk.PhotoImage(Image.open(r"img\bill.png"))
+    panel = Label(t, image=img,bg="white")
     panel.photo = img
     panel.pack()
     return t
@@ -445,11 +446,11 @@ def user_details(tab_main, username):
 
 # Admin details
 def admin_details(tab_main, username):
-    t = Frame(tab_main, background="#212121")
+    t = Frame(tab_main, background="white")
     data = get_admin_details(int(username))
-    lname = Label(t, text="NAME: "+data[1], fg="white", bg="#212121")
-    lid = Label(t, text="ID: "+str(data[0]), fg="white", bg="#212121")
-    lphno = Label(t, text="PHNO: "+str(data[2]), fg="white", bg="#212121")
+    lname = Label(t, text="NAME: "+data[1], fg="black", bg="white")
+    lid = Label(t, text="ID: "+str(data[0]), fg="black", bg="white")
+    lphno = Label(t, text="PHNO: "+str(data[2]), fg="black", bg="white")
     lname.config(font=("Courier", 44))
     lid.config(font=("Courier", 44))
     lphno.config(font=("Courier", 44))
@@ -457,7 +458,7 @@ def admin_details(tab_main, username):
     lid.pack()
     lphno.pack()
     img = ImageTk.PhotoImage(Image.open(r"img\admin.png"))
-    panel = Label(t, image=img)
+    panel = Label(t, image=img,bg="white")
     panel.photo = img
     panel.pack()
     return t
@@ -468,9 +469,9 @@ def popup(msg):
     pop = Toplevel()
     pop.geometry("200x60")
     pop.title("MESSAGE")
-    pop.configure(bg="#212121")
-    l = Label(pop, text=msg, fg="white", bg="#212121")
-    exitb = Button(pop, text="OK", fg="white", bg="#1966ff",
+    pop.configure(bg="white")
+    l = Label(pop, text=msg, fg="black", bg="white")
+    exitb = Button(pop, text="OK", fg="black", bg="white",
                    command=lambda: pop.destroy())
     l.pack()
     exitb.pack()
@@ -479,9 +480,9 @@ def popup(msg):
 # Employee dashboard
 def ud(username):
     ud = Toplevel()
-    ud.geometry("900x500")
+    ud.geometry("900x800")
     ud.title("USER DASH")
-    ud.configure(bg="#212121")
+    ud.configure(bg="white")
     tab_main = ttk.Notebook(ud)
     t1 = user_details(tab_main, username)
     t2 = bill(tab_main, username)
@@ -497,9 +498,9 @@ def ud(username):
 # Admin dashboard
 def ad(username):
     ad = Toplevel()
-    ad.geometry("900x700")
+    ad.geometry("900x800")
     ad.title("ADMIN DASH")
-    ad.configure(bg="#212121")
+    ad.configure(bg="white")
     tab_main = ttk.Notebook(ad)
     t1 = admin_details(tab_main, username)
     t2 = list_emp(tab_main, username)
@@ -549,57 +550,80 @@ def admin_auth(username, password):
 # Employee login
 def user_login():
     ul = Toplevel()
-    ul.geometry("250x100")
+    ul.geometry("300x130")
     ul.title("USER LOGIN")
-    ul.configure(bg="#212121")
-    l1 = Label(ul, text="ENTER EID: ", fg="white", bg="#212121")
+    ul.configure(bg="white")
+    l1 = Label(ul, text="EID: ", fg="black", bg="white")
     e1 = Entry(ul)
-    l2 = Label(ul, text="ENTER PASSWORD: ", fg="white", bg="#212121")
+    l2 = Label(ul, text="PASSWORD: ", fg="black", bg="white")
     e2 = Entry(ul, show="*")
-    sb = Button(ul, text="LOGIN", fg="white", bg="#1966ff",
+    sb = Button(ul, text="LOGIN", fg="black", bg="white",
                 command=lambda: user_auth(e1.get(), e2.get()))
     ul.bind('<Return>', lambda event: user_auth(e1.get(), e2.get()))
-    l1.grid(row=0, column=0)
-    e1.grid(row=0, column=1)
+    l1.grid(row=0, column=0,pady=10)
+    e1.grid(row=0, column=1,pady=10)
     l2.grid(row=1, column=0)
     e2.grid(row=1, column=1)
-    sb.grid(row=2, column=1)
+    sb.grid(row=2, column=1,pady=10)
 
 
 # Admin login
 def admin_login():
     al = Toplevel()
-    al.geometry("250x100")
+    al.geometry("300x130")
     al.title("ADMIN LOGIN")
-    al.configure(bg="#212121")
-    l1 = Label(al, text="ENTER AID: ", fg="white", bg="#212121")
+    al.configure(bg="white")
+    l1 = Label(al, text="AID: ", fg="black", bg="white")
     e1 = Entry(al)
-    l2 = Label(al, text="ENTER PASSWORD: ", fg="white", bg="#212121")
+    l2 = Label(al, text="PASSWORD: ", fg="black", bg="white")
     e2 = Entry(al, show="*")
-    sb = Button(al, text="LOGIN", fg="white", bg="#1966ff",
+    sb = Button(al, text="LOGIN", fg="black", bg="white",
                 command=lambda: admin_auth(e1.get(), e2.get()))
     al.bind('<Return>', lambda event: admin_auth(e1.get(), e2.get()))
-    l1.grid(row=1, column=0)
-    e1.grid(row=1, column=1)
+    l1.grid(row=1, column=0,pady=10)
+    e1.grid(row=1, column=1, pady=10)
     l2.grid(row=2, column=0)
     e2.grid(row=2, column=1)
-    sb.grid(row=3, column=1)
+    sb.grid(row=3, column=1, pady=10)
     # al.mainloop()
 
 
 # Initial setup
 root = Tk()
-root.geometry("1000x500")
-root.title("Restaurant Billing System")
-root.configure(bg="#212121")
-adminB = Button(root, text="ADMIN", fg="white", bg="#1966ff", padx=16,
-                pady=8, bd=5, width=10, anchor="center", command=admin_login)
-userB = Button(root, text="USER", fg="white", bg="#1966ff", padx=16,
-               pady=8, bd=5, width=10, anchor="center", command=user_login)
-adminB.grid(row=0, column=0)
-userB.grid(row=1, column=0)
-img = ImageTk.PhotoImage(Image.open(r"img\logo.jpg"))
-panel = Label(root, image=img)
+root.geometry("1000x1000")
+root.title("Medical Shop Billing System")
+root.configure(bg="white")
+myFont = font.Font(size=30)
+admin_img=PhotoImage(file='img\d_login.png')
+adminB = Button(root, fg="black", bg="white", padx=16,
+                pady=8, bd=5, anchor="center", command=admin_login, image=admin_img, borderwidth = 5)
+user_img=PhotoImage(file='img\login.png')
+userB = Button(root, fg="black", bg="white", padx=16,
+               pady=8, bd=5, anchor="center", command=user_login, image=user_img, borderwidth = 5)
+close_img = PhotoImage(file='img\close.png')
+
+close_button = Button(root,  fg="black", bg="white", padx=16,
+               pady=8, bd=5,  anchor="center", command=root.quit, image=close_img,borderwidth = 0)
+# close_button['font'] = myFont
+adminB.grid(row=2, column=0, pady=0)
+userB.grid(row=3, column=0,pady=20)
+close_button.grid(row=4, column=0)
+
+
+img = ImageTk.PhotoImage(Image.open(r"img\pharmacy.png"))
+panel = Label(root, image=img, width=1000, height=750,bg="white")
 panel.photo = img
-panel.grid(row=2, column=0)
+panel.grid(row=1, column=0)
+
+# close button
+root.overrideredirect(True)
+
+
+# close_button.pack(pady=100)
+
+
 root.mainloop()
+
+
+
+
